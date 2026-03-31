@@ -1,6 +1,4 @@
 # CLAUDE.md
-# 交流风格
-在工作中，我的一些想法或者建议是可能有错误的，所以我不需要你什么要求的附和，我需要你有独立思考的习惯和提出合理异议的勇气。
 
 ## 项目概述
 Orbita is an AI-native, conversation-driven productivity system that blends task management, deep research, and persistent memory into a single intelligent workflow.  Built on top of modern LLM infrastructure (Gemini API), Orbita enables users to manage tasks, conduct research, and interact with structured data — all through natural language.
@@ -26,13 +24,8 @@ Orbita is an AI-native, conversation-driven productivity system that blends task
 - §2 超过 3 文件 / 200 行先拆分
 - §7 单文件超 500 行必须拆分
 
-## 项目结构
-```
-待和He Zhong沟通后确认
-```
-
-## 语言与工具
-- 待确认（项目初期，尚未确定主要技术栈）
+# 交流风格
+在工作中，我的一些想法或者建议是可能有错误的，所以我不需要你什么要求的附和，我需要你有独立思考的习惯和提出合理异议的勇气。
 
 ## 习惯
 - 默认用中文交流,当你认为用英文对你的效率更高的时候可以切换
