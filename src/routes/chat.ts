@@ -16,9 +16,9 @@ const SESSION_TTL = 86400 // 24h
 chat.get('/history', async (c) => {
   const userId = c.get('userId')
   const rows = await c.env.DB.prepare(
-    'SELECT role, content FROM messages WHERE user_id = ? ORDER BY created_at ASC LIMIT 100'
+    'SELECT role, content FROM messages WHERE user_id = ? ORDER BY created_at DESC LIMIT 100'
   ).bind(userId).all<{ role: string; content: string }>()
-  return c.json(rows.results)
+  return c.json(rows.results.reverse())
 })
 
 chat.post('/', async (c) => {
