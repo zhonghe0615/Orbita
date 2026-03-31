@@ -1,0 +1,5 @@
+JWT_SECRET="any-random-string-for-local-dev"
+GEMINI_API_KEY="your-gemini-api-key"
+SERPER_API_KEY="your-serper-api-key"
+QDRANT_URL="https://your-cluster-id.region.cloud.qdrant.io"
+QDRANT_API_KEY="your-qdrant-api-key"

@@ -1,0 +1,11 @@
+node_modules/
+public/
+.wrangler/
+.dev.vars
+dist/
+
+# Cloudflare 部署配置（含真实 account_id / database_id，不入库）
+wrangler.toml
+
+# Claude Code 本地配置（含历史权限记录，可能含调试用 API key）
+.claude/

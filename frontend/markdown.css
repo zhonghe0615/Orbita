@@ -1,0 +1,4 @@
+.md table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.md th, .md td { border: 1px solid #e0e0e0; padding: 6px 10px; text-align: left; }
+.md th { background: #f5f5f5; font-weight: 600; }
+.md tr:nth-child(even) { background: #fafafa; }
