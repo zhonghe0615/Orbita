@@ -10,7 +10,7 @@ const chat = new Hono<{ Bindings: Bindings; Variables: AuthVariables }>()
 
 chat.use('*', authMiddleware)
 
-const SESSION_MAX = 20   // KV 中保留的最大消息条数
+const SESSION_MAX = 10   // KV 中保留的最大消息条数
 const SESSION_TTL = 86400 // 24h
 
 chat.get('/history', async (c) => {
