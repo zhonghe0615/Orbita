@@ -38,6 +38,8 @@ const ADMIN_SCHEMA = `
 - 查看指定用户详情: {"type":"admin_get_user","target_user_id":"..."}
 - 查看指定用户的任务: {"type":"admin_get_user_tasks","target_user_id":"..."}
 - 查看指定用户的消息历史: {"type":"admin_get_user_messages","target_user_id":"..."}
+
+管理员数据规则：用户对查询结果有质疑（如"不止吧"、"好像不对"、"应该更多"）时，必须重新执行对应查询操作，不得依赖上下文中的旧结果作答。
 `
 
 const ACTION_SCHEMA = `

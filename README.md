@@ -10,6 +10,8 @@ An AI-native, conversation-driven productivity system. Manage tasks, run deep re
 
 Built on Cloudflare Workers + Gemini API. No subscription required: every dependency has a free tier.
 
+**Live demo:** https://orbita.zhonghe98105.workers.dev/
+
 ---
 
 ### Architecture
@@ -224,6 +226,8 @@ MIT
 AI 原生的对话式效率系统，将任务管理、深度研究和持久记忆整合到单一工作流中。全程自然语言交互，无需学习任何命令。
 
 基于 Cloudflare Workers + Gemini API 构建，所有依赖均有免费额度，零订阅成本可跑起来。
+
+**在线体验：** https://orbita.zhonghe98105.workers.dev/
 
 ---
 
