@@ -85,7 +85,7 @@ export async function executeTool(
       const { title, description } = args as { title: string; description?: string }
       const task = await db
         .prepare('INSERT INTO tasks (user_id, title, description) VALUES (?, ?, ?) RETURNING id, title, description, status, created_at')
-        .bind(userId, title, description ?? null)
+        .bind(userId, title.slice(0, 100), description ? description.slice(0, 500) : null)
         .first<Task>()
       return { success: true, task }
     }
@@ -103,9 +103,10 @@ export async function executeTool(
       const { id, title, description, status } = args as { id: number; title?: string; description?: string; status?: string }
       const sets: string[] = ['updated_at = CURRENT_TIMESTAMP']
       const vals: unknown[] = []
-      if (title !== undefined) { sets.push('title = ?'); vals.push(title) }
-      if (description !== undefined) { sets.push('description = ?'); vals.push(description) }
-      if (status !== undefined) { sets.push('status = ?'); vals.push(status) }
+      const VALID_STATUSES = ['todo', 'in_progress', 'done', 'cancelled']
+      if (title !== undefined) { sets.push('title = ?'); vals.push(title.slice(0, 100)) }
+      if (description !== undefined) { sets.push('description = ?'); vals.push(description.slice(0, 500)) }
+      if (status !== undefined && VALID_STATUSES.includes(status)) { sets.push('status = ?'); vals.push(status) }
       vals.push(id, userId)
       await db.prepare(`UPDATE tasks SET ${sets.join(', ')} WHERE id = ? AND user_id = ?`).bind(...vals).run()
       return { success: true }
