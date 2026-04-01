@@ -86,15 +86,20 @@ chat.post('/', async (c) => {
     { role: 'user' as const, parts: [{ text: message }] as [{ text: string }] },
     { role: 'model' as const, parts: [{ text: stripLinks(reply) }] as [{ text: string }] },
   ].slice(-SESSION_MAX)
-  await c.env.KV.put(sessionKey, JSON.stringify(updated), { expirationTtl: SESSION_TTL })
-
-  // 6. 持久化到 D1（用于历史消息渲染）
+  // 5. 持久化到 D1（真相来源，优先写）
   await c.env.DB.batch([
     c.env.DB.prepare('INSERT INTO messages (user_id, role, content) VALUES (?, ?, ?)')
       .bind(userId, 'user', message),
     c.env.DB.prepare('INSERT INTO messages (user_id, role, content) VALUES (?, ?, ?)')
       .bind(userId, 'assistant', reply),
   ])
+
+  // 6. 更新 KV 缓存（D1 成功后再写，失败则删掉旧值让下次请求从 D1 重建）
+  try {
+    await c.env.KV.put(sessionKey, JSON.stringify(updated), { expirationTtl: SESSION_TTL })
+  } catch {
+    await c.env.KV.delete(sessionKey)
+  }
 
   return c.json({ reply })
 })
